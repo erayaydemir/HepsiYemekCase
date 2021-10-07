@@ -227,6 +227,9 @@ namespace HepsiYemek.WebApi.Controllers
                 return NotFound(serviceResponce);
             }
 
+            //TODO: You Must Remove Modified ObjectId From Redis Server
+            _distributedCache.RemoveAsync(product.Id.ToString());
+
             product.Name = productModel.Name;
             product.Description = productModel.Description;
             product.Currency = productModel.Currency;
